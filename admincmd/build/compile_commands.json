@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/shoucheng.mi/Desktop/admincmd/build",
+  "command": "C:\\Qt\\Tools\\mingw1310_64\\bin\\c++.exe   -std=gnu++17 -o CMakeFiles\\admincmd.dir\\src\\main.cpp.obj -c C:\\Users\\shoucheng.mi\\Desktop\\admincmd\\src\\main.cpp",
+  "file": "C:/Users/shoucheng.mi/Desktop/admincmd/src/main.cpp",
+  "output": "CMakeFiles/admincmd.dir/src/main.cpp.obj"
+}
+]

@@ -1,0 +1,47 @@
+cmake_minimum_required(VERSION 3.16)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static")
+
+project(downuojson VERSION 0.0.0 LANGUAGES CXX)
+
+#指定输出路径
+SET(OUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+if (NOT EXISTS ${OUT_PATH})
+    file(MAKE_DIRECTORY ${OUT_PATH})
+endif ()
+SET(EXECUTABLE_OUTPUT_PATH ${OUT_PATH})
+SET(LIBRARY_OUTPUT_PATH ${OUT_PATH})
+
+
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+#set(CMAKE_PREFIX_PATH C:/Qt/6.5.3/mingw_64/lib/cmake)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+#spdlog config
+add_subdirectory(lib/spdlog )
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 11)
+  SET(CMAKE_CXX_STANDARD_REQUIRED ON)
+endif()
+
+#json cmake config
+set(JSON_BuildTests OFF CACHE INTERNAL "")
+add_subdirectory(lib/json)
+
+add_subdirectory(lib/curl)
+
+file(GLOB_RECURSE SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/include/*.h
+)
+
+message("PROJECT_NAME :" ${PROJECT_NAME})
+add_executable(${PROJECT_NAME} ${SRCS})
+
+target_link_libraries(${PROJECT_NAME} 
+#  Qt6::Widgets
+  spdlog::spdlog
+  nlohmann_json::nlohmann_json
+  CURL::libcurl
+)
