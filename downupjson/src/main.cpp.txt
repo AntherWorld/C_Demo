@@ -1,9 +1,0 @@
-#include <windows.h>
-
-int main() {
-    // cmd.exe 的路径
-    LPCSTR cmdPath = "C:\\\\Windows\\\\System32\\\\cmd.exe";
-    // 使用ShellExecute运行cmd.exe
-    ShellExecute(NULL, "runas", cmdPath, NULL, NULL, SW_SHOWDEFAULT);
-    return 0;
-}
