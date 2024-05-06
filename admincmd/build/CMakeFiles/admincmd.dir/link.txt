@@ -1,3 +1,0 @@
-C:\Users\shoucheng.mi\scoop\apps\cmake\3.27.7\bin\cmake.exe -E rm -f CMakeFiles\admincmd.dir/objects.a
-C:\Qt\Tools\mingw1310_64\bin\ar.exe qc CMakeFiles\admincmd.dir/objects.a @CMakeFiles\admincmd.dir\objects1.rsp
-C:\Qt\Tools\mingw1310_64\bin\c++.exe  -static -Wl,--whole-archive CMakeFiles\admincmd.dir/objects.a -Wl,--no-whole-archive -o C:\Users\shoucheng.mi\Desktop\admincmd\bin\admincmd.exe -Wl,--out-implib,C:\Users\shoucheng.mi\Desktop\admincmd\bin\libadmincmd.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\admincmd.dir\linkLibs.rsp

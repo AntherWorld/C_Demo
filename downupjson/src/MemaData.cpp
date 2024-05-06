@@ -50,7 +50,7 @@ nlohmann::json  MemaData::TxTtoJson(nlohmann::json jArray){
 
     std::string line;
     char delimiter = ':';
-
+    
 
     while (std::getline(file, line)) {
         size_t delimiterPos = line.find(':');
@@ -59,11 +59,23 @@ nlohmann::json  MemaData::TxTtoJson(nlohmann::json jArray){
             return {line, ""};
         }
         std::string firstPart = line.substr(0, delimiterPos);
+
         std::string secondPart = line.substr(delimiterPos + 1); // 跳过冒号
-        //std::cout << firstPart << std::endl;
-        //std::cout << secondPart << std::endl;
+        bool found = false;
+      // Iterate through each character in the string
+    for (std::string::iterator it = secondPart.begin(); it != secondPart.end(); ++it) {
+        // Check if the character is the byte value 0x20 (space)
+        if (static_cast<unsigned char>(*it) == 0x20) {
+            found = true;
+            // Erase all characters from the space onwards
+            secondPart.erase(it, secondPart.end());
+            break;  // Exit loop if byte is found
+        }
+    }
+
         vector1.push_back(firstPart);
         vector2.push_back(secondPart);
+     
     }
 
      if (vector1.size() == vector2.size())
@@ -74,9 +86,9 @@ nlohmann::json  MemaData::TxTtoJson(nlohmann::json jArray){
             }
      }
     
-     //this->jsonData=jArray;
-    // 输出JSON字符串
-    //std::cout << jArray.dump(4) << std::endl;
+    // for (auto& element : jArray.items()) {
+    //     std::cout << "Key: " << element.key() << ", Value: " << element.value() << std::endl;
+    // }
     
     // 关闭文件
     file.close();
@@ -104,8 +116,8 @@ CURL *curl = curl_easy_init();
         struct curl_slist *headers = nullptr;
         headers = curl_slist_append(headers, "Content-Type: application/json");
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
-
-        //std::cout <<jsonData.c_str() << std::endl;
+        
+        std::cout <<jsonData.c_str() << std::endl;
         // 设置要发送的数据
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, jsonData.c_str());
 

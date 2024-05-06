@@ -1,3 +1,0 @@
-C:/Users/shoucheng.mi/Desktop/admincmd/build/CMakeFiles/admincmd.dir
-C:/Users/shoucheng.mi/Desktop/admincmd/build/CMakeFiles/edit_cache.dir
-C:/Users/shoucheng.mi/Desktop/admincmd/build/CMakeFiles/rebuild_cache.dir
